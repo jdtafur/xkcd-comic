@@ -1,8 +1,29 @@
-<div class="flex flex-col w-full h-full comic-container align-center">
-  @if (comicCurrent) {
-    <h1>{{comicCurrent.title}} ({{comicCurrent.num}})</h1>
-    <img [src]="comicCurrent.img" [alt]="comicCurrent.alt">
-    <span>{{date}}</span>
-    <p>{{comicCurrent.transcript}}</p>
-  }
+<div class="flex flex-col h-full comic-container align-center">
+  <ng-container [ngTemplateOutlet]="comic"></ng-container>
+  <button class="next-comic-button" (click)="getComicByRandomNumber()">
+    Ver otro comic
+  </button>
 </div>
+
+<ng-template #comic>
+  @if (comicCurrent) {
+
+    <h1>{{ comicCurrent.title }} ({{ comicCurrent.num }})</h1>
+    <span>{{ date }}</span>
+    <div class="comic">
+      <img [src]="comicCurrent.img" [alt]="comicCurrent.alt">
+      <ng-container [ngTemplateOutlet]="transcript"></ng-container>
+    </div>
+
+  }
+</ng-template>
+
+<ng-template #transcript>
+  <div class="transcript">
+    @for (key of getTranscript(comicCurrent.transcript); track key) {
+      @for (subKey of getSubTranscript(key); track subKey) {
+        <p>{{ subKey }}</p>
+      }
+    }
+  </div>
+</ng-template>

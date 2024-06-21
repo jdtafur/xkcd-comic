@@ -6,6 +6,8 @@ $primary-color: #FF5733;
 body {
   color: $text-color;
   background-color: $background-color;
+  padding: 0;
+  margin: 0;
 }
 
 .flex {
@@ -16,6 +18,10 @@ body {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .w-full {
   width: 100%;
 }
@@ -24,10 +30,21 @@ body {
   height: 100%;
 }
 
+.w-middle {
+  width: 50%;
+}
+
 .justify-center {
   justify-content: center;
 }
 
 .align-center {
   align-items: center;
+}
+
+.button {
+  cursor: pointer;
+  font-size: larger;
+  border-radius: 20px;
+  padding: 5px 10px;
 }

@@ -4,9 +4,29 @@
   padding: 10px;
   background-color: $background-color;
 
-  > img {
-    max-width: 50%;
-    height: auto;
-    border: solid 1px $primary-color;
+  > .comic {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+      max-width: 100%;
+      height: auto;
+      border: solid 1px $primary-color;
+    }
+
+    > .transcript {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .next-comic-button {
+    @extend .button;
+    background-color: $primary-color;
+    color: $text-color;
   }
 }
