@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://xkcd.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

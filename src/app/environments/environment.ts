@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  baseUrl: 'https://xkcd.com/',
+  baseUrl: '/api',
   complement: 'info.0.json',
 };
