@@ -1,0 +1,12 @@
+@import "../../../styles";
+
+.comic-container {
+  padding: 10px;
+  background-color: $background-color;
+
+  > img {
+    max-width: 50%;
+    height: auto;
+    border: solid 1px $primary-color;
+  }
+}

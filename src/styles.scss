@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+$background-color: #2E2E2E;
+$text-color: #FFFFFF;
+$primary-color: #FF5733;
+
+body {
+  color: $text-color;
+  background-color: $background-color;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}

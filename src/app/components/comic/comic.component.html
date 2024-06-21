@@ -1,0 +1,8 @@
+<div class="flex flex-col w-full h-full comic-container align-center">
+  @if (comicCurrent) {
+    <h1>{{comicCurrent.title}} ({{comicCurrent.num}})</h1>
+    <img [src]="comicCurrent.img" [alt]="comicCurrent.alt">
+    <span>{{date}}</span>
+    <p>{{comicCurrent.transcript}}</p>
+  }
+</div>
