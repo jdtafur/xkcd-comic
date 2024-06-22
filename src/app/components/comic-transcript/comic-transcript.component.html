@@ -1,7 +1,10 @@
 <div class="transcript">
   @for (key of getTranscript(transcript); track key) {
     @for (subKey of getSubTranscript(key); track subKey) {
-      <p>{{ subKey }}</p>
+      <p [class.scene]="isScene(subKey)"
+         [class.description]="isSceneDescription(subKey)">
+        {{ subKey }}
+      </p>
     }
   }
 </div>

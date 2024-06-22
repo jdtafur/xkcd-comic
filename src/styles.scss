@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-$background-color: #2E2E2E;
-$text-color: #FFFFFF;
-$primary-color: #FF5733;
+$primary-color: #8A2BE2; // OrangeRed
+$background-color: #FFFFFF; // Lavender Mist
+$text-color: #2C3E50;
 
 body {
   color: $text-color;
@@ -46,5 +46,5 @@ body {
   cursor: pointer;
   font-size: larger;
   border-radius: 20px;
-  padding: 5px 10px;
+  padding: 5px 15px;
 }

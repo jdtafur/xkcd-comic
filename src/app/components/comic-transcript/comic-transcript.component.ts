@@ -10,6 +10,14 @@ import {Component, Input} from '@angular/core';
 export class ComicTranscriptComponent {
   @Input() transcript: string = '';
 
+  isScene(line: string): boolean {
+    return line.includes('[[') && line.includes(']]');
+  }
+
+  isSceneDescription(line: string): boolean {
+    return line.includes('((') && line.includes('))');
+  }
+
   getTranscript(transcript: string): string[] {
     return transcript.split('\n\n');
   }
