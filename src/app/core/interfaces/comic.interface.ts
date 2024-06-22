@@ -11,3 +11,8 @@ export interface Comic {
   title: string;
   day: string;
 }
+
+export interface ComicStateModel {
+  comic: Comic | null;
+  ratings: { [comicId: number]: number };
+}

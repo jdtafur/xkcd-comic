@@ -1,41 +1,37 @@
-import {Component} from '@angular/core';
-import {ComicService} from "../../core/services/comic.service";
-import {HttpClientModule} from "@angular/common/http";
-import {JsonPipe, NgTemplateOutlet} from "@angular/common";
+import {Component, OnInit} from '@angular/core';
+import {AsyncPipe, NgTemplateOutlet} from "@angular/common";
+import {Store} from "@ngxs/store";
+import {LoadComic, RateComic, LoadComicByRandomNumber} from "../../core/states/comic.actions";
+import {Observable} from "rxjs";
 import {Comic} from "../../core/interfaces/comic.interface";
-
-const RANGE = {
-  min: 1,
-  max: 2948,
-}
-
+import {ComicState} from "../../core/states/comic.state";
 
 @Component({
   selector: 'app-comic',
   standalone: true,
-  imports: [HttpClientModule, JsonPipe, NgTemplateOutlet],
-  providers: [ComicService],
+  imports: [
+    NgTemplateOutlet,
+    AsyncPipe,
+  ],
   templateUrl: './comic.component.html',
   styleUrl: './comic.component.scss'
 })
-export class ComicComponent {
-  comicCurrent!: Comic;
+export class ComicComponent implements OnInit {
+  currentComic$: Observable<Comic | null> = this.store.select(ComicState.getComic);
 
-  get date(): string {
-    return `${this.comicCurrent.day}/${this.comicCurrent.month}/${this.comicCurrent.year}`;
-  };
+  constructor(private store: Store) {
+  }
 
-  constructor(private _comicService: ComicService) {
-    this._comicService.getCurrent().subscribe((comic: Comic) => {
-      this.comicCurrent = comic;
-    });
+  ngOnInit() {
+    this.loadComic();
+  }
+
+  loadComic() {
+    this.store.dispatch(new LoadComic());
   }
 
   getComicByRandomNumber(): void {
-    const randomNumberComic: number = Math.floor(Math.random() * (RANGE.max - RANGE.min + 1)) + RANGE.min;
-    this._comicService.getByNumber(randomNumberComic).subscribe((comic: Comic) => {
-      this.comicCurrent = comic;
-    });
+    this.store.dispatch(new LoadComicByRandomNumber());
   }
 
   getTranscript(transcript: string): string[] {
@@ -44,5 +40,9 @@ export class ComicComponent {
 
   getSubTranscript(transcript: string): string[] {
     return transcript.split('\n')
+  }
+
+  rateComic(num: number, rating: number) {
+    this.store.dispatch(new RateComic({num, rating}));
   }
 }
