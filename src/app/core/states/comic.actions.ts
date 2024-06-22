@@ -15,5 +15,5 @@ export class SetComic {
 
 export class RateComic {
   static readonly type = '[Comic] Rate';
-  constructor(public payload: { num: number; rating: number }) {}
+  constructor(public rating: number ) {}
 }

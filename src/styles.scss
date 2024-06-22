@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-$primary-color: #8A2BE2; // OrangeRed
-$background-color: #FFFFFF; // Lavender Mist
+$primary-color: #43a031;
+$background-color: #FFFFFF;
 $text-color: #2C3E50;
 
 body {
@@ -40,6 +40,14 @@ body {
 
 .align-center {
   align-items: center;
+}
+
+.my-10 {
+  margin-block: 10px;
+}
+
+.font-bold {
+  font-weight: bold;
 }
 
 .button {

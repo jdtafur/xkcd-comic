@@ -8,7 +8,7 @@ import {LoadComic, LoadComicByRandomNumber, RateComic, SetComic} from "./comic.a
 
 const defaultState: ComicStateModel = {
   comic: null,
-  ratings: {}
+  rate: {}
 };
 
 @Injectable()
@@ -26,8 +26,9 @@ export class ComicState {
   }
 
   @Selector()
-  static getRatings(state: ComicStateModel): { [comicId: number]: number } {
-    return state.ratings;
+  static getCurrentRating(state: ComicStateModel): number {
+    const comic = state.comic;
+    return comic && state.rate[comic.num] ? state.rate[comic.num] : 0;
   }
 
   @Action(LoadComic)
@@ -61,10 +62,10 @@ export class ComicState {
   @Action(RateComic)
   rateComic(ctx: StateContext<ComicStateModel>, action: RateComic) {
     const state = ctx.getState();
-    ctx.patchState({
-      ratings: {
-        ...state.ratings,
-        [action.payload.num]: action.payload.rating
+    if (state.comic) ctx.patchState({
+      rate: {
+        ...state.rate,
+        [state.comic.num]: action.rating
       }
     });
   }

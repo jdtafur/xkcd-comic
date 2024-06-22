@@ -1,0 +1,68 @@
+@import "../../../styles";
+
+$rating-color-1: #FF0000;
+$rating-color-2: #FF4500;
+$rating-color-3: #FFA500;
+$rating-color-4: #9ACD32;
+$rating-color-5: #32CD32;
+
+:host {
+  .rate {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+
+    .rate-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 40px;
+      cursor: pointer;
+      border-radius: 50%;
+      border: 1px solid $text-color;
+      margin-inline: 5px;
+
+      &.selected, &:hover {
+        color: white;
+      }
+    }
+
+    > .rating-1 {
+      @extend .rate-item;
+      &:hover, &.selected {
+        background-color: $rating-color-1;
+      }
+    }
+
+    > .rating-2 {
+      @extend .rate-item;
+      &:hover, &.selected {
+        background-color: $rating-color-2;
+      }
+    }
+
+    > .rating-3 {
+      @extend .rate-item;
+      &:hover, &.selected {
+        background-color: $rating-color-3;
+      }
+    }
+
+    > .rating-4 {
+      @extend .rate-item;
+      &:hover, &.selected {
+        background-color: $rating-color-4;
+      }
+    }
+
+    >.rating-5 {
+      @extend .rate-item;
+      &:hover, &.selected {
+        background-color: $rating-color-5;
+      }
+    }
+  }
+}

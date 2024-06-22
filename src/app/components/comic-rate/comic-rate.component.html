@@ -1,0 +1,15 @@
+<div class="my-10">
+  @if(!currentRate) {
+    <span class="font-bold w-full justify-center flex">¿Qué calificación le darias a este comic?</span>
+  }
+  <ul class="rate" appToggle [activeSelector]="currentRate" (activeSelectorChange)="rateComic($event)">
+    <li class="rating-1" [class.selected]="currentRate >= 1" appToggleItem selector="1">1</li>
+    <li class="rating-2" [class.selected]="currentRate >= 2" appToggleItem selector="2">2</li>
+    <li class="rating-3" [class.selected]="currentRate >= 3" appToggleItem selector="3">3</li>
+    <li class="rating-4" [class.selected]="currentRate >= 4" appToggleItem selector="4">4</li>
+    <li class="rating-5" [class.selected]="currentRate >= 5" appToggleItem selector="5">5</li>
+  </ul>
+  @if(currentRate) {
+    <span class="font-bold w-full justify-center flex">Gracias por tu calificación!</span>
+  }
+</div>

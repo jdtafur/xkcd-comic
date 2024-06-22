@@ -14,5 +14,5 @@ export interface Comic {
 
 export interface ComicStateModel {
   comic: Comic | null;
-  ratings: { [comicId: number]: number };
+  rate: { [comicNumber: number]: number };
 }
