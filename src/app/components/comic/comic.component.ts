@@ -5,6 +5,7 @@ import {LoadComic, RateComic, LoadComicByRandomNumber} from "../../core/states/c
 import {Observable} from "rxjs";
 import {Comic} from "../../core/interfaces/comic.interface";
 import {ComicState} from "../../core/states/comic.state";
+import {ComicDetailComponent} from "../comic-detail/comic-detail.component";
 
 @Component({
   selector: 'app-comic',
@@ -12,6 +13,7 @@ import {ComicState} from "../../core/states/comic.state";
   imports: [
     NgTemplateOutlet,
     AsyncPipe,
+    ComicDetailComponent,
   ],
   templateUrl: './comic.component.html',
   styleUrl: './comic.component.scss'
@@ -32,14 +34,6 @@ export class ComicComponent implements OnInit {
 
   getComicByRandomNumber(): void {
     this.store.dispatch(new LoadComicByRandomNumber());
-  }
-
-  getTranscript(transcript: string): string[] {
-    return transcript.split('\n\n')
-  }
-
-  getSubTranscript(transcript: string): string[] {
-    return transcript.split('\n')
   }
 
   rateComic(num: number, rating: number) {

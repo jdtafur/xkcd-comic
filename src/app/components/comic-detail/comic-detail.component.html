@@ -1,0 +1,18 @@
+<div class="comic">
+  <h1>{{ title }}</h1>
+  <img [src]="comic.img" [alt]="comic.alt">
+  <span>{{ date }}</span>
+  <ng-container [ngTemplateOutlet]="transcriptTemplate"
+                [ngTemplateOutletContext]="{transcript:comic.transcript }">
+  </ng-container>
+</div>
+
+<ng-template #transcriptTemplate let-transcript="transcript">
+  <div class="transcript">
+    @for (key of getTranscript(transcript); track key) {
+      @for (subKey of getSubTranscript(key); track subKey) {
+        <p>{{ subKey }}</p>
+      }
+    }
+  </div>
+</ng-template>
