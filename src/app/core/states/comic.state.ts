@@ -34,7 +34,6 @@ export class ComicState {
   loadComic(ctx: StateContext<ComicStateModel>) {
     return this.comicService.getCurrent().pipe(
       tap((comic: Comic) => {
-        console.log(comic);
         ctx.dispatch(new SetComic(comic));
       })
     );
@@ -45,7 +44,6 @@ export class ComicState {
     const randomNumberComic: number = Math.floor(Math.random() * (RANGE_COMIC.max - RANGE_COMIC.min + 1)) + RANGE_COMIC.min;
     return this.comicService.getByNumber(randomNumberComic).pipe(
       tap((comic: Comic) => {
-        console.log(comic);
         ctx.dispatch(new SetComic(comic));
       })
     );

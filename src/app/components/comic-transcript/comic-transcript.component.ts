@@ -11,7 +11,6 @@ export class ComicTranscriptComponent {
   @Input() transcript: string = '';
 
   getTranscript(transcript: string): string[] {
-    console.log(transcript.split('\n\n'))
     return transcript.split('\n\n');
   }
 
