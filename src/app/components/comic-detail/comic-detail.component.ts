@@ -1,12 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {Comic} from "../../core/interfaces/comic.interface";
 import {NgTemplateOutlet} from "@angular/common";
+import {ComicTranscriptComponent} from "../comic-transcript/comic-transcript.component";
 
 @Component({
   selector: 'app-comic-detail',
   standalone: true,
   imports: [
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    ComicTranscriptComponent
   ],
   templateUrl: './comic-detail.component.html',
   styleUrl: './comic-detail.component.scss'
@@ -22,12 +24,4 @@ export class ComicDetailComponent {
     const {day, month, year} = this.comic;
     return `${day}/${month}/${year}`;
   };
-
-  getTranscript(transcript: string): string[] {
-    return transcript.split('\n\n')
-  }
-
-  getSubTranscript(transcript: string): string[] {
-    return transcript.split('\n')
-  }
 }

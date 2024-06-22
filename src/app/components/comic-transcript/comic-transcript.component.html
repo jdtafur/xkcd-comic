@@ -1,0 +1,7 @@
+<div class="transcript">
+  @for (key of getTranscript(transcript); track key) {
+    @for (subKey of getSubTranscript(key); track subKey) {
+      <p>{{ subKey }}</p>
+    }
+  }
+</div>
